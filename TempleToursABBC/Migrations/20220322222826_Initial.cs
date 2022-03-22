@@ -47,22 +47,22 @@ namespace TempleToursABBC.Migrations
             migrationBuilder.InsertData(
                 table: "TimeSlots",
                 columns: new[] { "TimeSlotId", "Available", "Slot" },
-                values: new object[] { 1, false, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 1, true, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "TimeSlots",
                 columns: new[] { "TimeSlotId", "Available", "Slot" },
-                values: new object[] { 2, false, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 2, true, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "TimeSlots",
                 columns: new[] { "TimeSlotId", "Available", "Slot" },
-                values: new object[] { 3, false, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 3, true, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "TimeSlots",
                 columns: new[] { "TimeSlotId", "Available", "Slot" },
-                values: new object[] { 4, false, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 4, true, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Appointments_TimeSlotId",

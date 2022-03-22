@@ -9,7 +9,7 @@ using TempleToursABBC.Models;
 namespace TempleToursABBC.Migrations
 {
     [DbContext(typeof(AppointmentContext))]
-    [Migration("20220322212951_Initial")]
+    [Migration("20220322222826_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -68,25 +68,25 @@ namespace TempleToursABBC.Migrations
                         new
                         {
                             TimeSlotId = 1,
-                            Available = false,
+                            Available = true,
                             Slot = new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             TimeSlotId = 2,
-                            Available = false,
+                            Available = true,
                             Slot = new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             TimeSlotId = 3,
-                            Available = false,
+                            Available = true,
                             Slot = new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             TimeSlotId = 4,
-                            Available = false,
+                            Available = true,
                             Slot = new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });

@@ -36,6 +36,12 @@ namespace TempleToursABBC.Controllers
         {
             if (ModelState.IsValid)
             {
+                var stuff = blahContext.TimeSlots.Single(x => x.TimeSlotId == appointment.TimeSlotId);
+
+                stuff.Available = false; // make it so the time slot is no longer available
+
+                blahContext.Update(stuff); //updates the timeslot table
+
                 blahContext.Add(appointment);
                 blahContext.SaveChanges();
 
@@ -58,7 +64,7 @@ namespace TempleToursABBC.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditAppointment(int appointmentid)
+        public IActionResult EditAppointment(int appointmentid) //we might have to make it so when an appointment is changed, the time slot is freed up and the new appointment is not available
         {
             ViewBag.TimeSlots = blahContext.TimeSlots.ToList();
 
@@ -87,6 +93,13 @@ namespace TempleToursABBC.Controllers
         [HttpPost]
         public IActionResult DeleteAppointment(Appointment appointment)
         {
+
+            var stuff = blahContext.TimeSlots.Single(x => x.TimeSlotId == appointment.TimeSlotId);
+
+            stuff.Available = true; // make it so the timeslot is available when the appointment is deleted
+
+            blahContext.Update(stuff); //updates the timeslot table
+
             blahContext.Appointments.Remove(appointment);
             blahContext.SaveChanges();
 

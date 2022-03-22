@@ -23,10 +23,10 @@ namespace TempleToursABBC.Models
         {
 
             mb.Entity<TimeSlot>().HasData(                  // prepopulated Timeslot fields
-                    new TimeSlot { TimeSlotId = 1, Slot = new DateTime(2022, 4, 15) },
-                    new TimeSlot { TimeSlotId = 2, Slot = new DateTime(2022, 4, 15) },
-                    new TimeSlot { TimeSlotId = 3, Slot = new DateTime(2022, 4, 15) },
-                    new TimeSlot { TimeSlotId = 4, Slot = new DateTime(2022, 4, 15) }
+                    new TimeSlot { TimeSlotId = 1, Slot = new DateTime(2022, 4, 15), Available = true },
+                    new TimeSlot { TimeSlotId = 2, Slot = new DateTime(2022, 4, 15), Available = true },
+                    new TimeSlot { TimeSlotId = 3, Slot = new DateTime(2022, 4, 15), Available = true },
+                    new TimeSlot { TimeSlotId = 4, Slot = new DateTime(2022, 4, 15), Available = true }
                 );
         }
 
