@@ -60,7 +60,7 @@ namespace TempleToursABBC.Controllers
         [HttpGet]
         public IActionResult EditAppointment(int appointmentid)
         {
-            ViewBag.Categories = blahContext.TimeSlots.ToList();
+            ViewBag.TimeSlots = blahContext.TimeSlots.ToList();
 
             var stuff = blahContext.Appointments.Single(x => x.AppointmentId == appointmentid);
 
