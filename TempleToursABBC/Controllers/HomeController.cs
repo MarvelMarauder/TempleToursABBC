@@ -58,11 +58,11 @@ namespace TempleToursABBC.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditAppointment(int appid)
+        public IActionResult EditAppointment(int appointmentid)
         {
             ViewBag.Categories = blahContext.TimeSlots.ToList();
 
-            var stuff = blahContext.Appointments.Single(x => x.AppointmentId == appid);
+            var stuff = blahContext.Appointments.Single(x => x.AppointmentId == appointmentid);
 
             return View("SignUp", stuff);
         }
