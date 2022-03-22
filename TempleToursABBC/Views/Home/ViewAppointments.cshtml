@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "View Appointments";
+}
+
+@model List<Appointment>
+
+<table class="table table-bordered table-striped">
+    <thead class="font-weight-bold">
+        <tr>
+
+            <td>Group Name</td>
+            <td>Group Size</td>
+            <td>Time Slot</td>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var app in Model)
+        {
+                <tr>
+                    <td>@app.GroupName</td>
+                    <td>@app.GroupSize</td>
+
+                    <td>@app.TimeSlot.Slot</td>
+
+                    <td><a asp-controller="Home" asp-action="EditAppointment" asp-route-appointmentid="@app.AppointmentId">Edit</a></td>
+                    <td><a asp-controller="Home" asp-action="DeleteAppointment" asp-route-appointmentid="@app.AppointmentId">Delete</a></td>
+                </tr>
+        }
+    </tbody>
+
+</table>
