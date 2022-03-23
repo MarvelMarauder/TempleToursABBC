@@ -66,6 +66,11 @@ namespace TempleToursABBC.Controllers
         [HttpGet]
         public IActionResult EditAppointment(int appointmentid) //we might have to make it so when an appointment is changed, the time slot is freed up and the new appointment is not available
         {
+            var appointment1 = blahContext.Appointments.Single(x => x.AppointmentId == appointmentid);
+            var stuff1 = blahContext.TimeSlots.Single(x => x.TimeSlotId == appointment1.TimeSlotId);
+
+            stuff1.Available = true; // make it so the timeslot is available when the appointment is deleted
+
             ViewBag.TimeSlots = blahContext.TimeSlots.ToList();
 
             var stuff = blahContext.Appointments.Single(x => x.AppointmentId == appointmentid);
@@ -91,16 +96,16 @@ namespace TempleToursABBC.Controllers
         }
 
         [HttpPost]
-        public IActionResult DeleteAppointment(Appointment appointment)
+        public IActionResult DeleteAppointment(Appointment appointment, int appointmentid)
         {
-
-            var stuff = blahContext.TimeSlots.Single(x => x.TimeSlotId == appointment.TimeSlotId);
+            var appointment1 = blahContext.Appointments.Single(x => x.AppointmentId == appointmentid);
+            var stuff = blahContext.TimeSlots.Single(x => x.TimeSlotId == appointment1.TimeSlotId);
 
             stuff.Available = true; // make it so the timeslot is available when the appointment is deleted
 
             blahContext.Update(stuff); //updates the timeslot table
 
-            blahContext.Appointments.Remove(appointment);
+            blahContext.Appointments.Remove(appointment1);
             blahContext.SaveChanges();
 
             return RedirectToAction("ViewAppointments");
