@@ -39,9 +39,9 @@ namespace TempleToursABBC.Controllers
         }
 
         [HttpGet]
-        public IActionResult SignUp()
+        public IActionResult SignUp(int timeSlotId)
         {
-            ViewBag.TimeSlots = blahContext.TimeSlots.ToList();
+            ViewBag.TimeSlots = blahContext.TimeSlots.Where(x => x.TimeSlotId == timeSlotId).ToList();
             return View();
         }
 
