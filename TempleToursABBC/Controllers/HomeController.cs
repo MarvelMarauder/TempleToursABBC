@@ -27,6 +27,8 @@ namespace TempleToursABBC.Controllers
         [HttpGet]
         public IActionResult SignUpList()
         {
+            ViewBag.TimeSlots = blahContext.TimeSlots.ToList();
+
             return View();
         }
 

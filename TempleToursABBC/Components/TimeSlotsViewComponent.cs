@@ -19,9 +19,9 @@ namespace TempleToursABBC.Components
         public IViewComponentResult Invoke()
         {
             var timeSlots = context.TimeSlots
-                .Select(x => x.Slot)
                 .Distinct()
-                .OrderBy(x => x.Date);
+                .OrderBy(x => x.Slot)
+                .ToList();
 
 
             return View(timeSlots);
