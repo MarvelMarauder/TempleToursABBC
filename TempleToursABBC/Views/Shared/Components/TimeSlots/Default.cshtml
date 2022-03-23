@@ -7,7 +7,7 @@
     {
         if (@c.Available == true)
         {
-            <a asp-controller="Home" asp-action="Index"
+            <a asp-controller="Home" asp-action="SignUp" asp-route-timeSlotId="@c.TimeSlotId"
                class="btn btn-outline-primary btn-primary">@c.Slot</a><br />
         }
         else

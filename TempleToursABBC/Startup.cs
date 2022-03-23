@@ -56,8 +56,8 @@ namespace TempleToursABBC
 
                 endpoints.MapControllerRoute(
                     "timeslotpage",
-                    "{timeSlot}/Page{pageNum}",
-                    new { Controller = "Home", action = "Index" });
+                    "/{timeSlotId}",
+                    new { Controller = "Home", action = "SignUp" });
             });
         }
     }
