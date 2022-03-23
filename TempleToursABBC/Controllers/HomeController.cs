@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using TempleToursABBC.Models;
+using TempleToursABBC.Models.ViewModels;
 
 namespace TempleToursABBC.Controllers
 {
@@ -25,11 +26,16 @@ namespace TempleToursABBC.Controllers
         }
 
         [HttpGet]
-        public IActionResult SignUpList()
+        public IActionResult SignUpList(int pageNum = 1)
         {
-            ViewBag.TimeSlots = blahContext.TimeSlots.ToList();
+            var x = new PageInfoModel
+            {
+                TotalNumTimes = blahContext.TimeSlots.Count(),
+                TimesPerPage = 13,
+                CurrentPage = pageNum
+            };
 
-            return View();
+            return View(x);
         }
 
         [HttpGet]

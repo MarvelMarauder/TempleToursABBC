@@ -1,5 +1,10 @@
-﻿
+﻿@model TempleToursABBC.Models.ViewModels.PageInfoModel
+
 <div id="timeslots">
     <vc:time-slots></vc:time-slots>
 </div>
+<div page-turn="@Model" page-action="Index"
+     page-class="btn" page-class-normal="bg-light"
+     page-class-selected="btn-primary" class="btn-group pull-right m-1"
+     page-class-enabled="true"></div>
 
