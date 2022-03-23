@@ -27,7 +27,7 @@ namespace TempleToursABBC
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<TempleDBContext>(options =>
+            services.AddDbContext<AppointmentContext>(options =>
             {
                 options.UseSqlite(Configuration["ConnectionStrings:TempleConnection"]);
             });

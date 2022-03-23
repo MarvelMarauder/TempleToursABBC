@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Add / Edit ";
+}
+
+@model Appointment
+
+<h1>Add Task</h1>
+
+<div>
+    <form method="post">
+        <label asp-for="GroupName">Group Name: </label>
+        <input asp-for="GroupName" /> <br />
+
+        <label asp-for="GroupSize">Group Size: </label>
+        <input asp-for="GroupSize" /> <br />
+
+        <label asp-for="EmailAddress">Email Address: </label>
+        <input asp-for="EmailAddress" /> <br />
+
+        <label asp-for="Phone">Phone Number: </label>
+        <input asp-for="Phone" /> <br />
+
+        <label asp-for="TimeSlotId">Pick Time Slot: </label> <!--what is this?-->
+        <select asp-for="TimeSlotId">
+            <option value="">-- Select a Time --</option><!--put a little if statement in here to determine if the slot is available-->
+            @foreach (TimeSlot ts in ViewBag.TimeSlots)
+            {
+                @if (ts.Available == true)
+                {
+                    <option value="@ts.TimeSlotId">@ts.Slot</option>
+                }
+            }
+        </select>
+        <br />
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
