@@ -22,12 +22,12 @@
 
         <label asp-for="TimeSlotId">Pick Time Slot: </label> <!--what is this?-->
         <select asp-for="TimeSlotId">
-            <option value="">-- Select a Time --</option><!--put a little if statement in here to determine if the slot is available-->
+            <option value="">-- Select a Time --</option>--><!--put a little if statement in here to determine if the slot is available-->
             @foreach (TimeSlot ts in ViewBag.TimeSlots)
             {
                 @if (ts.Available == true)
                 {
-                    <option value="@ts.TimeSlotId">@ts.Slot</option>
+                    <option value="@ts.TimeSlotId" class="disabled">@ts.Slot</option>
                 }
             }
         </select>
