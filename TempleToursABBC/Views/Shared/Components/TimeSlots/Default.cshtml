@@ -1,17 +1,20 @@
-﻿@page
-@{
-}
-@model IEnumerable<string>
+﻿@model List<TimeSlot>
 
-<a asp-controller="Home" asp-action="Index" asp-route-bookCategory=""
-   asp-route-pageNum="1" class="btn btn-outline-secondary bg-light">Home</a>
-<br />
-<br />
+
 <div class="d-grid gap-2">
 
-    @foreach (string c in Model)
+    @foreach (TimeSlot c in Model)
     {
-        <a asp-controller="Home" asp-action="Index"
-           class="btn">@c</a><br />
+        if (@c.Available == true)
+        {
+            <a asp-controller="Home" asp-action="SignUp" asp-route-timeSlotId="@c.TimeSlotId"
+               class="btn btn-outline-primary btn-primary">@c.Slot</a><br />
+        }
+        else
+        {
+            <a asp-controller="Home" asp-action="Index"
+               class="btn btn-outline-primary btn-primary disabled">@c.Slot</a><br />
+        }
+
     }
 </div>

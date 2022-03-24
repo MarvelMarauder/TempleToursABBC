@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using TempleToursABBC.Models;
+using TempleToursABBC.Models.ViewModels;
 
 namespace TempleToursABBC.Controllers
 {
@@ -25,15 +26,22 @@ namespace TempleToursABBC.Controllers
         }
 
         [HttpGet]
-        public IActionResult SignUpList()
+        public IActionResult SignUpList(int pageNum = 1)
         {
-            return View();
+            var x = new PageInfoModel
+            {
+                TotalNumTimes = blahContext.TimeSlots.Count(),
+                TimesPerPage = 13,
+                CurrentPage = pageNum
+            };
+
+            return View(x);
         }
 
         [HttpGet]
-        public IActionResult SignUp()
+        public IActionResult SignUp(int timeSlotId)
         {
-            ViewBag.TimeSlots = blahContext.TimeSlots.ToList();
+            ViewBag.TimeSlots = blahContext.TimeSlots.Where(x => x.TimeSlotId == timeSlotId).ToList();
             return View();
         }
 
@@ -77,6 +85,9 @@ namespace TempleToursABBC.Controllers
 
             stuff1.Available = true; // make it so the timeslot is available when the appointment is deleted
 
+            blahContext.Update(stuff1);
+            blahContext.SaveChanges(); //free up the appointment if the appointment is changed using the edit function
+
             ViewBag.TimeSlots = blahContext.TimeSlots.ToList();
 
             var stuff = blahContext.Appointments.Single(x => x.AppointmentId == appointmentid);
@@ -87,7 +98,11 @@ namespace TempleToursABBC.Controllers
         [HttpPost]
         public IActionResult EditAppointment(Appointment appointmentStuff)
         {
+            var stuff1 = blahContext.TimeSlots.Single(x => x.TimeSlotId == appointmentStuff.TimeSlotId);
+            stuff1.Available = false; 
+
             blahContext.Update(appointmentStuff);
+            blahContext.Update(stuff1);
             blahContext.SaveChanges();
 
             return RedirectToAction("ViewAppointments");
