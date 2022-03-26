@@ -21,7 +21,6 @@ namespace TempleToursABBC.Components
             var timeSlots = context.TimeSlots
                 .Distinct()
                 .OrderBy(x => x.Slot)
-                .Take(13)
                 .ToList();
             return View(timeSlots);
         }

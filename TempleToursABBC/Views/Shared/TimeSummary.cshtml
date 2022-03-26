@@ -1,0 +1,14 @@
+﻿@model TimeSlot
+
+
+@if (Model.Available == true)
+{
+    <a asp-controller="Home" asp-action="SignUp" asp-route-timeSlotId="@Model.TimeSlotId"
+        class="btn btn-outline-primary btn-primary col-12">@Model.Slot.TimeOfDay</a><br /><br />
+}
+else
+{
+    <a asp-controller="Home" asp-action="Index"
+        class="btn btn-outline-primary btn-primary disabled col-12">@Model.Slot.TimeOfDay</a><br /><br />
+}
+

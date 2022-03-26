@@ -28,11 +28,21 @@ namespace TempleToursABBC.Controllers
         [HttpGet]
         public IActionResult SignUpList(int pageNum = 1)
         {
-            var x = new PageInfoModel
+            int pageSize = 13;
+            var x = new TimeSlotsViewModel
             {
-                TotalNumTimes = blahContext.TimeSlots.Count(),
-                TimesPerPage = 13,
-                CurrentPage = pageNum
+                Times = blahContext.TimeSlots
+                .OrderBy(p => p.Slot)
+                .Skip((pageNum - 1) * pageSize)
+                .Take(pageSize),
+
+                PageInfo = new PageInfoModel
+                {
+                    TotalNumTimes = blahContext.TimeSlots.Count(),
+                    TimesPerPage = 13,
+                    CurrentPage = pageNum
+                }
+
             };
 
             return View(x);
